@@ -1,0 +1,66 @@
+<div class="header" id="header">
+	<div class="Icon-hamburguer"></div>
+	<div class="header-top">
+		<a href="/">
+			<picture class="logo-header">
+				<img src="/{{ base_path ~ directory }}/src/assets/images/logos/logoRMBC.png" alt="example" title="example" loading="lazy">
+			</picture>
+		</a>
+	</div>
+	<div class="header__mobile-topnav" id="boton-menu">
+		<span class="top-bar"></span>
+		<span class="middle-bar"></span>
+		<span class="bottom-bar"></span>
+	</div>
+	<div class="header-button" id="header-button">
+		{% import _self as menus %}
+		{{ menus.menu_links(items, attributes, 0) }}
+		{% macro menu_links(items, attributes, menu_level) %}
+			{% import _self as menus %}
+			{% if items %}
+				{% if menu_level == 0 %}
+					<ul>
+						{# <a class="header-logo-login" href="/user/login">
+							<img src="/themes/custom/ultima_hora_theme/dist/src/assets/images/Icon-svg/icono-logo.svg" alt="Logo-login">
+						</a> #}
+						{% for item in items %}
+							<li>
+								{{ link(item.title, item.url) }}
+								{% if item.below %}
+									{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+								{% endif %}
+							</li>
+						{% endfor %}
+					{% else %}
+						<ul>
+							{% for item in items %}
+								<li>
+									{{ link(item.title, item.url) }}
+									{% if item.below %}
+										{{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+									{% endif %}
+								</li>
+							{% endfor %}
+						{% endif %}
+					</ul>
+				{% endif %}
+			{% endmacro %}
+			<div class="header-share">
+				<div class="header-share-item">
+					<a href="/buscar" target="_blank"><img src="/{{directory}}/dist/src/assets/images/Icon/Search.png" alt=""></a>
+				</div>
+				<div class="header-share-item">
+					<a href="https://www.facebook.com/ultimahoracolnoticias" target="_blank"><img src="/{{directory}}/dist/src/assets/images/Icon/Facebook.png" alt=""></a>
+				</div>
+				<div class="header-share-item">
+					<a href="https://www.instagram.com/ultimahoracol/" target="_blank"><img src="/{{directory}}/dist/src/assets/images/Icon/Instagram.png" alt=""></a>
+				</div>
+				<div class="header-share-item">
+					<a href="https://twitter.com/ultimahoracol_?s=20" target="_blank"><img src="/{{directory}}/dist/src/assets/images/Icon/Twitter.png" alt=""></a>
+				</div>
+				<div class="header-share-item">
+					<a href="https://www.youtube.com/@ultimahoracol" target="_blank"><img src="/{{directory}}/dist/src/assets/images/Icon/Youtube.png" alt=""></a>
+				</div>
+			</div>
+		</div>
+	</div>

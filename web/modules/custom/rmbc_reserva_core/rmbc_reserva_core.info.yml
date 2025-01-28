@@ -1,0 +1,11 @@
+name: 'RMBC Reserva Core'
+type: module
+description: 'Core functionality for RMBC reservation system.'
+core_version_requirement: ^8 || ^9 || ^10 || ^11
+package: RMBC
+dependencies:
+  - drupal:field
+  - drupal:node
+  - drupal:user
+  - drupal:views
+version: '1.0.0'

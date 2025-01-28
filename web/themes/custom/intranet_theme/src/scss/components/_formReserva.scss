@@ -1,0 +1,197 @@
+/* Contenedor principal del formulario */
+.custom-form-class {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px; 
+  background-color: #ffffff; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  font-family: 'Arial', sans-serif; 
+}
+
+/* Estilo de los labels */
+.custom-form-class label {
+  display: block; 
+  font-weight: 600;
+  color: #173d62; 
+  margin-bottom: 8px; 
+  font-size: 14px;
+}
+
+/* Estilo de los inputs y textarea */
+.custom-form-class input[type="text"],
+.custom-form-class input[type="email"],
+.custom-form-class input[type="password"],
+.custom-form-class input[type="date"],
+.custom-form-class select,
+.custom-form-class textarea {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid #cccccc; /* Borde gris claro */
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333333; /* Texto gris oscuro */
+  background-color: #f8f9fa; /* Fondo ligeramente gris */
+  box-sizing: border-box;
+  margin-bottom: 20px; /* Espaciado mayor entre campos */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+/* Cambiar borde y sombra al enfoque */
+.custom-form-class input:focus,
+.custom-form-class textarea:focus {
+  border-color: #007bff; /* Azul */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Efecto de enfoque */
+  outline: none; /* Elimina el borde predeterminado */
+}
+
+/* Estilo del botón */
+.custom-form-class .btn-submit {
+  display: inline-block;
+  width: 100%; /* Botón de ancho completo */
+  padding: 12px;
+  background-color: #173d62; /* Azul primario */
+  color: #ffffff; /* Texto blanco */
+  border: none;
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Animaciones suaves */
+}
+
+/* Cambiar estilo del botón al pasar el cursor o al enfoque */
+.custom-form-class .btn-submit:hover,
+.custom-form-class .btn-submit:focus {
+  background-color: #173d62; /* Azul más oscuro */
+  transform: scale(1.02); /* Ligero aumento */
+}
+
+/* Mensajes de error */
+.custom-form-class .error {
+  color: #d9534f; /* Rojo para errores */
+  font-size: 14px;
+  margin-top: -10px; /* Ajuste para espacio más compacto */
+  margin-bottom: 15px;
+  display: block;
+}
+
+/* Ajuste para textarea */
+.custom-form-class textarea {
+  resize: vertical; /* Permitir redimensionar solo verticalmente */
+  min-height: 120px;
+}
+
+/* Estilo para campos deshabilitados */
+.custom-form-class input:disabled,
+.custom-form-class textarea:disabled {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+  color: #6c757d;
+}
+
+/* Estilo del botón */
+.js-form-submit.form-submit {
+  display: inline-block; /* Botón en línea */
+  padding: 8px 30px; /* Espaciado interno */
+  background-color: #173d62; /* Azul */
+  color: #ffffff; /* Texto blanco */
+  border: none; /* Sin bordes */
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer;
+  font-size: 16px; /* Tamaño de fuente */
+  font-weight: bold; /* Texto en negrita */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Animaciones suaves */
+  margin: 6px auto; /* Asegura el centrado con margen automático */
+}
+
+/* Cambiar el fondo y texto al pasar el cursor */
+.js-form-submit.form-submit:hover {
+  background-color: #0056b3; /* Azul más oscuro */
+  color: #e9ecef; /* Texto ligeramente gris */
+}
+
+/* Estilo al enfocarse (focus) */
+.js-form-submit.form-submit:focus {
+  background-color: #ffc107; /* Fondo amarillo */
+  color: #000000; /* Texto negro */
+  box-shadow: 0 0 4px rgba(255, 193, 7, 0.8); /* Sombra amarilla */
+  outline: none; /* Elimina el borde predeterminado */
+}
+
+  div[data-drupal-messages] {
+    display: block;
+  }
+  [data-drupal-messages] {
+    position: fixed;
+    top: 20px; /* Ajusta la distancia desde la parte superior */
+    right: 20px; /* Ajusta la distancia desde la parte derecha */
+    z-index: 1000;
+    width: auto;
+    max-width: 350px; /* Ancho máximo */
+    background-color: #ffffff; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    border: 1px solid #173d62; /* Bordes en azul */
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    animation: fadeInOut 5s forwards; /* Animación de aparición y desaparición */
+  }
+  
+  /* Estilos del mensaje de error generado por Drupal */
+  .messages--error {
+    color: #ffffff; /* Letras blancas */
+    background-color: #007bff; /* Fondo azul */
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  /* Asegura que los encabezados ocultos no afecten el layout */
+  h2.visually-hidden {
+    display: none !important;
+  }
+  
+  /* Animación para desvanecer el mensaje después de 2 segundos */
+  @keyframes fadeInOut {
+    0% {
+      opacity: 1; /* El mensaje empieza visible */
+    }
+    90% {
+      opacity: 1; /* Se mantiene visible hasta el 90% del tiempo */
+    }
+    100% {
+      opacity: 0; /* El mensaje se desvanece al final */
+      visibility: hidden; /* Se oculta completamente */
+    }
+  }
+
+// Estilo para el mensaje de error
+.js-form-item.form-item {
+  .error {
+    color: $error-color;
+    font-size: $error-font-size;
+    font-weight: $error-font-weight;
+    margin: $error-margin;
+    display: block;
+
+    // Animación de aparición (opcional)
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}

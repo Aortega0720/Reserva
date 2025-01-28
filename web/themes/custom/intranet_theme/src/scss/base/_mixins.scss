@@ -1,0 +1,395 @@
+$browser-context: 16; // Default
+
+@function em($pixels, $context: $browser-context) {
+  @return #{$pixels/$context}em;
+}
+
+@mixin bdesktop {
+  @media (min-width: #{$big-desktop-width}) {
+    @content;
+  }
+}
+
+// Position absolute
+@mixin p-absolute {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  opacity: 0;
+}
+
+@mixin exp-100 {
+  width: 100%;
+  height: 100%;
+}
+
+// MQS
+@mixin mq($mquery) {
+  $media-xxs: "(min-width : 320px)"; // iPhone Retina
+  $media-xss: "(min-width : 370px)"; // iPhone Retina
+  $media-xssx: "(min-width : 418px)"; // iPhone Retina
+  $media-xs: "(min-width : 480px)"; // Telefonos
+  $media-sm: "(min-width: 768px)"; // Tablets
+  $media-md: "(min-width: 992px)"; // Escritorios
+  $media-mdx: "(min-width: 1024px)"; // Escritorios
+  $media-lg: "(min-width: 1200px)"; // Resoluciones grandes
+  $media-xlg: "(min-width: 1500px)"; // Resoluciones grandes
+  $media-xslg: "(min-width: 1940px)"; // Resoluciones grandes
+  $media-xxlg: "(min-width: 2000px)"; // Resoluciones grandes
+
+  @if $mquery == xxs {
+    @media #{$media-xxs} {
+      @content;
+    }
+  }
+  @if $mquery == xss{
+    @media #{$media-xss} {
+      @content;
+    }
+  }
+  @if $mquery == xssx{
+    @media #{$media-xssx} {
+      @content;
+    }
+  }
+  @if $mquery == xs {
+    @media #{$media-xs} {
+      @content;
+    }
+  } @else if $mquery == sm {
+    @media #{$media-sm} {
+      @content;
+    }
+  } @else if $mquery == md {
+    @media #{$media-md} {
+      @content;
+    }
+  } @else if $mquery == mdx {
+    @media #{$media-mdx} {
+      @content;
+    }
+  } @else if $mquery == lg {
+    @media #{$media-lg} {
+      @content;
+    }
+  } @else if $mquery == xlg {
+    @media #{$media-xlg} {
+      @content;
+    }
+  } @else if $mquery == xxlg {
+    @media #{$media-xxlg} {
+      @content;
+    }
+  } @else if $mquery == xslg {
+    @media #{$media-xslg} {
+      @content;
+    }
+  } @else {
+    @media ($mquery) {
+      @content;
+    }
+  }
+}
+
+@mixin btn {
+  border: 0;
+  border-radius: 0;
+  // line-height: 0;
+  font-weight: normal;
+}
+
+
+@mixin bgcover {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+@mixin coverAbsolute($z) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $z;
+}
+
+@mixin bgparallax {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center top;
+}
+
+@mixin iconSVG($path, $size) {
+  background-image: url($path);
+  background-size: $size;
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-indent: -999999px;
+  overflow: hidden;
+}
+
+// Clearfix mixin
+%clearfix {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin cont {
+  margin: 0 auto;
+  max-width: 1300px;
+  width: 100%;
+}
+
+// Define default font size
+@function rem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1.6rem;
+}
+
+@mixin font($size) {
+  font-size: $size;
+  font-size: rem($size);
+}
+
+// Arrows
+@mixin arrow($direction, $color, $size) {
+  display: block;
+  height: 0;
+  width: 0;
+
+  @if $direction == "top" {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+  } @else if $direction == "right" {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+  } @else if $direction == "bottom" {
+    border-top: $size solid $color;
+    border-right: $size solid transparent;
+    border-left: $size solid transparent;
+  } @else if $direction == "left" {
+    border-top: $size solid transparent;
+    border-right: $size solid $color;
+    border-bottom: $size solid transparent;
+  } @else if $direction == "top-left" {
+    border-top: $size solid $color;
+    border-right: $size solid transparent;
+  } @else if $direction == "top-right" {
+    border-top: $size solid $color;
+    border-left: $size solid transparent;
+  } @else if $direction == "bottom-left" {
+    border-bottom: $size solid $color;
+    border-right: $size solid transparent;
+  } @else if $direction == "bottom-right" {
+    border-bottom: $size solid $color;
+    border-left: $size solid transparent;
+  }
+}
+
+// Pseudo
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+// Define vertical, horizontal, or both position
+@mixin center($position) {
+  position: absolute;
+
+  @if $position == "vertical" {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  } @else if $position == "horizontal" {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translate(-50%);
+  } @else if $position == "both" {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+// Placeholders
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content;
+  }
+  :-moz-placeholder {
+    @content;
+  }
+  ::-moz-placeholder {
+    @content;
+  }
+  :-ms-input-placeholder {
+    @content;
+  }
+}
+
+// Layout wrapper
+@mixin wrapper {
+  max-width: 1242px;
+  margin: 0 auto;
+}
+
+// Buttons
+@mixin defBtn($size, $padding, $color, $bg, $hover) {
+  display: inline-block;
+  font-size: $size;
+  padding: $padding;
+  text-align: center;
+  color: $color;
+  background-color: $bg;
+  transition: all 0.4s;
+  border-radius: 0;
+  cursor: pointer;
+  &:hover {
+    background-color: $hover;
+    color: $color;
+  }
+}
+@mixin BtnCategory ($bg-boton, $fp1, $color-btn) {
+  background: $bg-boton;
+  color: $color-btn;
+  position: relative;
+  border-radius: 4px;
+  width: max-content;
+  padding: 10px 24px;
+  display: block;
+  font: normal normal 700 12px/1 $fp1;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.4s ease;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+@mixin BtnCategoryborder ($bg-boton-borde, $color-btn-borde, $font-btn-borde, $color-borde-borde) {
+  background: $bg-boton-borde;
+  color: $color-btn-borde;
+  position: relative;
+  width: max-content;
+  padding: 8px 16px;
+  display: block;
+  font: normal normal 700 12px/1 $font-btn-borde;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.4s ease;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  border: 1px solid $color-borde-borde;
+  border-radius: 4px;
+}
+@mixin BtnCategoryTop ($bg-boton-main, $font-btn-main, $color-btn-main) {
+  position: relative;
+  display: block;
+  font: normal normal 700 24px/1 $font-btn-main;
+  border-radius: 16px 16px 0px 0px;
+  color: $color-btn-main;
+  padding: 17px 37px;
+  background: $bg-boton-main;
+  width: max-content;
+  text-transform: uppercase;
+}
+@mixin Sliderdots {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 0;
+  li.slick-active button {
+    background: #000000;
+  }
+  button {
+    display: block;
+    background: #ffffff;
+    width: 15px;
+    height: 15px;
+    font-size: 0;
+    border: none;
+    border: 3px solid #000000;
+    border-radius: 50%;
+    padding: 0;
+    transition: all 0.4s ease;
+  }
+}
+
+
+/// Stroke font-character
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {List}            - text-shadow list
+@function stroke($stroke, $color) {
+  $shadow: ();
+  $from: $stroke*-1;
+  @for $i from $from through $stroke {
+   @for $j from $from through $stroke {
+      $shadow: append($shadow, $i*1px $j*1px 0 $color, comma);
+    }
+  }
+  @return $shadow;
+}
+/// Stroke font-character
+/// @param  {Integer} $stroke - Stroke width
+/// @param  {Color}   $color  - Stroke color
+/// @return {Style}           - text-shadow
+@mixin stroke($stroke, $color) {
+  text-shadow: stroke($stroke, $color);
+}
+
+@mixin btn-ajust-modal {
+  font-size: 1.62rem;
+}
+
+
+@mixin textCommun($size) {
+  color: $white;
+  font-size: $size;
+  font-family: $bud;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+@mixin textCommunFranklin($size) {
+  color: $white;
+  font-size: $size;
+  font-family: $FranklinGothic;
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 1px;
+}
+@mixin flex($type) {
+  @if $type == "column" {
+    display: flex;
+    flex-direction: column;
+  } @else if $type == "row" {
+    display: flex;
+    flex-direction: row;
+  } @else if $type == "wrap" {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  } @else if $type == "center" {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+}

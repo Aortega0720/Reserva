@@ -1,0 +1,18 @@
+{% set resultados = view.result %}
+{% set length = resultados|length %}
+
+
+{% if length > 0 %}
+  <div class="puestos">
+    <div class="grid-container-item">
+      <img src="./{{directory}}/imagenes/plano.png" alt="Plano" width="1534" height="768">
+      {% for item in resultados %}
+
+        {% set id = item._entity.field_id.value %}
+        <div class="area area{{id}}" id="area{{id}}" data-desc="{{item._entity.field_description.value|raw}}" data-img="{{ file_url(item._entity.field_icono.entity.fileuri) }}" data-nid="{{item.nid}}">{{id}}</div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+

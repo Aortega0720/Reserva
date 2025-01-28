@@ -1,0 +1,17 @@
+name: Intranet RMBC Theme
+description: The theme for the Intranet Theme, for Drupal 9 and drupal 11.
+core: 9.x
+core_version_requirement: ^9 || ^10 || ^11
+type: theme
+base theme: stable
+libraries:
+  - intranet_theme/global-styling
+
+libraries-override:
+  system/base: false
+
+regions:
+  header_top: Header Top
+  header: Header
+  content: Content
+  footer: Footer

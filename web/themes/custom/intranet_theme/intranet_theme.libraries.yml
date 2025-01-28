@@ -1,0 +1,13 @@
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      build/css/main.css: {}
+  js:
+    build/js/main.bundle.js: { attributes: { defer: true }, minified: true }
+    build/js/drupal/jquery.validate.js: { attributes: { defer: true }, minified: true }
+    build/js/drupal/f.contact.js: { attributes: { defer: true }, minified: true }
+    build/js/drupal/validate.js: { attributes: { defer: true }, minified: true }
+  dependencies:
+    - core/jquery
+    - core/drupal

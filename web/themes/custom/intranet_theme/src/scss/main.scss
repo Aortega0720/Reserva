@@ -1,0 +1,14 @@
+// -- Base -- //
+@import "base/mixins";
+@import "base/variables";
+@import "base/general";
+@import "base/titles";  
+
+// Components
+@import "./components/puestos";
+@import "./components/formReserva";
+@import "./components/tablereserva";
+
+// -- Layout -- //
+@import "layout/header";
+@import "layout/footer";

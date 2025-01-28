@@ -1,0 +1,192 @@
+.header {
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.15);
+  .header-share {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+  }
+  .header-top {
+    text-align: center;
+    padding: 20px 0;
+    .logo-header {
+      display: contents;
+    }
+    img {
+      width: 169px;
+      height: 24px;
+      object-fit: contain;
+      z-index: 999999999;
+      position: relative;
+      @include mq(md) {
+        width: 226px;
+        height: 47px;
+      }
+    }
+  }
+  .header-logo-login {
+    display: none;
+    transition: all 0.4s ease;
+    &:hover {
+      transform: scale(1.02);
+    }
+    @include mq(md) {
+      display: block;
+    }
+  }
+  .header-button {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    height: 0px;
+    background: #173D62;
+    z-index: 99999;
+    width: 100%;
+    transition: all 0.4s ease;
+    overflow: hidden;
+    position: absolute;
+    top: 65px;
+    @include mq(md) {
+      grid-template-columns: auto auto;
+      position: relative;
+      top: initial;
+      height: auto !important;
+      overflow: initial;
+    }
+    >ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 40px 0 0;
+      padding: 0 20px;
+      @include mq(md) {
+        margin: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: initial;
+        align-items: center;
+      }
+    }
+    li {
+      font: normal normal normal 12px/1 $fp1;
+      color: #ffffff;
+      margin: 10px;
+      cursor: pointer;
+      position: relative;
+      @include mq (md) {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      &.expanded {
+        &::after {
+          content: '';
+          display: block;
+          width: 24px;
+          height: 24px;
+          background: url("../assets/images/Icon-svg/ChevronDown.svg") center/contain no-repeat;
+          position: absolute;
+          right: 0;
+          top: -8px;
+          transition: all 0.4s ease;
+          @include mq (md) {
+            position: relative;
+            top: initial;
+          }
+        }
+        &.open::after {
+          transform: rotate(180deg);
+        }
+      }
+      &.open ul {
+        height: auto;
+        @include mq (md) {
+          padding: 10px 17px 10px 74px;
+        }
+      }
+      ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0 0 0 16px;
+        height: 0px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        @include mq (md) {
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+          border-radius: 0 0 10px 10px;
+          position: absolute;
+          z-index: 9;
+          background: $cp8;
+          top: calc(100% + 10px);
+        }
+        a {
+          white-space: nowrap;
+        }
+      }
+    }
+  }
+  &.menu-visible {
+    .header-button {
+       height: 100vh;
+       overflow: scroll;
+    }
+
+  }
+  .header__mobile-topnav {
+    display: block;
+    position: absolute;
+    color: #333;
+    left: 5%;
+    top: 21px;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 9999999;
+    @include mq(md) {
+      display: none;
+    }
+  }
+}
+
+
+.header .header__mobile-topnav .header__mobile-topnav {
+  right: 170px;
+}
+
+.header .header__mobile-topnav .top-bar,
+.header .header__mobile-topnav .middle-bar,
+.header .header__mobile-topnav .bottom-bar {
+  display: block;
+  width: 35px;
+  height: 5px;
+  background-color: #ffffff;
+  margin-bottom: 5px;
+  transition: all 0.2s;
+}
+
+.header .header__mobile-topnav.menu-open .top-bar {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin: 0;
+  position: relative;
+  top: 9px;
+}
+
+.header .header__mobile-topnav.menu-open .middle-bar {
+  display: none;
+}
+
+.header .header__mobile-topnav.menu-open .bottom-bar {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  margin: 0;
+  position: relative;
+  top: 4px;
+}

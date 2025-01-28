@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Implements hook_preprocess_paragraph().
+ */
+function intranet_theme_preprocess_paragraph(array &$variables) {
+  // Verificar si el paragraph bundle es 'seccion_de_newsletter'.
+  if ($variables['paragraph']->bundle() === 'seccion_de_newsletter') {
+    // Obtener el formulario y pasarlo a la variable de Twig.
+    $variables['newsletter_form'] = \Drupal::formBuilder()->getForm('Drupal\beltran_pardo_core\Form\NewsLetterForm');
+  }
+}

@@ -1,0 +1,26 @@
+{# <form{{attributes}}>
+	{{ title_prefix }}
+	{{ element }}
+	{{class}}
+	{{ title_suffix }}
+</form> #}
+
+<form{{ attributes.addClass('custom-form-class') }}>
+  {{ title_prefix }}
+  
+  <div class="form-header">
+    <h2>{{ title }}</h2>
+  </div>
+  
+  <div class="form-body">
+    {{ element }}
+  </div>
+  
+  {{ title_suffix }}
+  
+  {# <div class="form-footer">
+    <button type="submit" class="btn-submit">Enviar</button>
+  </div> #}
+</form>
+
+

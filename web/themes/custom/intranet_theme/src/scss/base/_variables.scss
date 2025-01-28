@@ -1,0 +1,65 @@
+/**
+* variables.scss
+*
+* These are the styles of variables.
+*
+*/
+// Fonts
+$fp: 'NotoSans-CondensedBold';
+$fp1:'NotoSans';
+$fp2: 'NotoSerif';
+$fp3: 'NotoSerifLight';
+$fp4: 'NotoSerifRegular';
+
+// Colors
+$cp1: #FFBB00;
+$cp2: #1A2741;
+$cp3: #0C2340;
+$cp4: #FFFFFF;
+$cp5: #000000;
+$cp6: #202020;
+$cp7: #828282;
+$cp8: #173D62;
+$cp9: #EE4A74;
+$cp10: #4F4F4F;
+$cp11: #FCE1E8;
+$cp12: #F7A4B9;
+$cp13: #F6F6F6;
+$cp14: #EAEAEA;
+$cp15: #808080;
+$cp16: #C8C8C8;
+
+
+$cp-error: #E11549;
+$cp-redes: #EE4A74;
+
+// Media Breakpoints for Responsive Design
+$xs: 575.98px;
+$sm: 767.98px;
+$md: 991.98px;
+$lg: 1199.98px;
+$xl: 1399.98px;
+$mobile: 975px;
+$desktop_1024: 1024px;
+
+// texto basico 
+$text-basic: $fp1; 
+$color-basic: $cp5;
+// boton basico
+$bg-boton: #00B4DC;
+$color-btn: $cp4;
+$font-btn: $fp1;
+// boton basico main categoria
+$bg-boton-main: #E11549;
+$color-btn-main: $cp4;
+$font-btn-main: $fp1;
+// boton basico borde categoria
+$bg-boton-borde: transparent;
+$color-btn-borde: $cp4;
+$font-btn-borde: $fp1;
+$color-borde-borde: $cp4;
+// Error
+$error-color: #d9534f;
+$error-font-size: 12px;
+$error-font-weight: bold;
+$error-margin: 5px 0;

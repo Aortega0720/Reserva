@@ -1,0 +1,48 @@
+/**
+ *  titles.scss
+ *
+ * General titles.
+ * Author: Carlos espinel.
+*/
+@mixin h2general ($cp5) {
+  font: normal normal normal 28px/1 $fp2;
+  color: $cp5;
+  margin: 0;
+  transition: all 0.4s ease;
+  @include mq (md) {
+    font: normal normal normal 40px/1 $fp2;
+  }
+}
+@mixin subTitle ($cp5) {
+  font: normal normal normal 24px/32px $fp1;
+  color: $cp5;
+  margin: 0;
+  transition: all 0.4s ease;
+}
+@mixin subTitletwo ($cp5) {
+  font: normal normal normal 24px/32px $fp2;
+  color: $cp5;
+  margin: 0;
+  transition: all 0.4s ease;
+}
+@mixin subTitlethree ($cp5) {
+  font: normal normal 500 32px/40px $fp1;
+  color: $cp5;
+  margin: 0;
+  transition: all 0.4s ease;
+}
+@mixin pbasic ($text-basic, $color-basic) {
+  font: normal normal normal 16px/1 $text-basic;
+  color: $color-basic;
+  margin: 0;
+}
+@mixin pbasicxl ($text-basic, $color-basic) {
+  font: normal normal 700 20px/1 $text-basic;
+  color: $color-basic;
+  margin: 0;
+}
+@mixin pbasicsmall ($text-basic, $color-basic) {
+  font: normal normal normal 12px/1 $text-basic;
+  color: $color-basic;
+  margin: 0;
+}

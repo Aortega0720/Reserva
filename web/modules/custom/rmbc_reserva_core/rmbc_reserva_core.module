@@ -1,0 +1,83 @@
+<?php
+
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_cron().
+ */
+function rmbc_reserva_core_cron() {
+  $time_zone = new \DateTimeZone('America/Bogota');
+  $current_time = new \DateTime('now', $time_zone);
+  $current_date = $current_time->format('Y-m-d');
+
+  $current_hour = (int) $current_time->format('H');
+  if ($current_hour >= 0 && $current_hour < 1) {
+    $dataReserva = rmbc_reserva_core_isReserva('fecha',$current_date, "reserva");
+
+    foreach ($dataReserva as $nid => $cupo_acumulado) {
+        try {
+          $node = Node::load($nid);
+          if ($node) {
+            $nuevo_cupo = $cupo_acumulado - 4;
+            $node->set('field_cupo', $nuevo_cupo);
+            $node->save();
+    
+            \Drupal::logger(__FUNCTION__)
+              ->notice("Nodo {$nid} actualizado. Cupo acumulado: {$cupo_acumulado}, nuevo cupo: {$nuevo_cupo}.");
+          } else {
+            \Drupal::logger(__FUNCTION__)
+              ->warning("Nodo {$nid} no encontrado.");
+          }
+        } catch (\Exception $e) {
+          \Drupal::logger(__FUNCTION__)
+            ->error("Error al actualizar el nodo {$nid}: " . $e->getMessage());
+        }
+      }
+
+    \Drupal::logger(__FUNCTION__)->info(print_r($dataReserva, true));
+    \Drupal::logger(__FUNCTION__)->notice('Tarea ejecutada a la medianoche o después (zona horaria Bogotá).');
+  }
+}
+
+/**
+ * rmbc reserva core isReserva funcion.
+ */
+function rmbc_reserva_core_isReserva($field, $value,$form) {
+
+    $connection = \Drupal::database();
+    $query = $connection->select('webform_submission_data', 's');
+    $query->join('webform_submission_data', 'camp', 'camp.sid = s.sid');
+    $results = $query
+        ->fields('camp',['sid', 'name', 'value'])
+        ->condition('s.name', $field)
+        ->condition('s.value', $value)
+        ->condition('s.webform_id', $form)
+        ->execute()
+        ->fetchAll();
+    
+    $resultMap = [];
+
+    $temp_nid = null;
+    $temp_cupo = null;
+
+    foreach ($results as $item) {
+    if ($item->name === 'nid') {
+        $temp_nid = $item->value;
+    }
+
+    if ($item->name === 'cupo') {
+        $temp_cupo = (int) $item->value;
+    }
+
+    if ($temp_nid !== null && $temp_cupo !== null) {
+        if (!isset($resultMap[$temp_nid])) {
+        $resultMap[$temp_nid] = 0;
+        }
+        $resultMap[$temp_nid] += $temp_cupo;
+        $temp_cupo = null;
+        $temp_nid = null;
+    }
+    }
+
+    return $resultMap;
+}

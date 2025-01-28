@@ -1,0 +1,15 @@
+{% set resultados = view.result %}
+{% set length = resultados|length %}
+
+{% if length > 0 %}
+<div class="table-container-reserva">
+  <table class="styled-table">
+    <thead>
+      {{ header }}
+    </thead>
+    <tbody>
+      {{ rows }} 
+    </tbody>
+  </table>
+</div>
+{% endif %}

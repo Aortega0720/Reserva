@@ -1,0 +1,100 @@
+.table-container-reserva {
+  background-color: #f9f9f9;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; // Desplazamiento horizontal en pantallas pequeñas
+  overflow-y: auto; // Habilita desplazamiento vertical
+  max-height: 400px; // Altura máxima para permitir el scroll
+  margin-bottom: 12px; // Margen inferior
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 16px;
+    text-align: left;
+
+    th,
+    td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      white-space: nowrap; // Evita el texto en varias líneas
+    }
+
+    thead {
+      background-color: #173d62;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    tbody {
+      tr:nth-child(even) {
+        background-color: #f3f3f3;
+      }
+
+      tr:hover {
+        background-color: #e9e9e9;
+      }
+    }
+  }
+
+  // Ajustes para dispositivos pequeños
+  @media (max-width: 768px) {
+    padding: 10px;
+
+    table {
+      font-size: 14px; // Reduce el tamaño de la fuente
+
+      th,
+      td {
+        padding: 8px; // Reduce el espacio entre celdas
+      }
+    }
+  }
+
+  // Ajustes para dispositivos muy pequeños (teléfonos)
+  @media (max-width: 480px) {
+    table {
+      border: 0;
+    }
+
+    thead {
+      display: none; // Oculta los encabezados en pantallas muy pequeñas
+    }
+
+    tbody {
+      tr {
+        display: block;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+      }
+
+      td {
+        display: block;
+        text-align: right;
+        padding: 8px 10px;
+        position: relative;
+        border: none;
+        white-space: normal;
+
+        &::before {
+          content: attr(data-label); // Usa los encabezados como etiquetas
+          position: absolute;
+          left: 10px;
+          top: 8px;
+          font-weight: bold;
+          text-transform: uppercase;
+          color: #555;
+        }
+      }
+    }
+  }
+}
+
+
+
